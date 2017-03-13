@@ -2,17 +2,28 @@
   <div id="app">
     <Vheader></Vheader>
     <div class="tab">
-      <a href="" class="tab-item">商品</a>
-      <a href="" class="tab-item">评论</a>
-      <a href="" class="tab-item">商家</a>
+      <a v-link="{ path:'/goods' }" class="tab-item">商品</a>
+      <a v-link="{ path:'/ratings' }" class="tab-item">评论</a>
+      <a v-link="{ path:'/seller' }" class="tab-item">商家</a>
     </div>
-    <div class="content">i am content</div>
+    <router-view></router-view>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
   import header from 'components/header/header';
+
   export default {
+    data() {
+      return {
+        seller: {}
+      };
+    },
+    created() {
+      this.$http.get('/api/seller').then((response) => {
+        console.log(response);
+      });
+    },
     components: {
       Vheader: header
     }
@@ -32,6 +43,9 @@
       text-align: center;
       font-size: 1.4rem;
       color: rgb(7,17,27);
+      &.active {
+        color: rgb(240, 20, 20);
+      }
     }
   }
 </style>
