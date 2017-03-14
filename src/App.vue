@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Vheader></Vheader>
+    <Vheader :seller="seller"></Vheader>
     <div class="tab">
       <a v-link="{ path:'/goods' }" class="tab-item">商品</a>
       <a v-link="{ path:'/ratings' }" class="tab-item">评论</a>
@@ -21,7 +21,11 @@
     },
     created() {
       this.$http.get('/api/seller').then((response) => {
-        console.log(response);
+        response = response.body;
+        if (response.errno === 0) {
+          this.seller = response.data;
+          console.log(this.seller);
+        }
       });
     },
     components: {
@@ -31,13 +35,16 @@
 </script>
 
 <style lang="scss">
+
   @import "./common/scss/base.scss";
+  @import "./common/scss/mixin.scss";
 
   .tab {
     display: flex;
     width: 100%;
     height: 4rem;
     line-height: 4rem;
+    @include border-1px(rgba(7, 17, 27, 0.1));
     a {
       flex: 1;
       text-align: center;
