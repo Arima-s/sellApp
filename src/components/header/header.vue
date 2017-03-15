@@ -17,6 +17,9 @@
 					<span class="support_description">{{seller.supports[0].description}}</span>
 				</div>
 			</div>
+			<div class="count">
+				{{seller.supports.length}}
+			</div>
 		</div>
 		<div class="header_notice">
 			
@@ -52,6 +55,7 @@
 			box-sizing: border-box;
 			background-color: #757575;
 			padding: 2.4rem 1.2rem 1.8rem 2.4rem;
+			position: relative;
 			.header_avatar {
 				float: left;
 				width: 6.4rem;
@@ -122,6 +126,14 @@
 						font-size: 1rem;
 					}
 				}
+			}
+			.count{
+				width: 2rem;
+				height: 1.5rem;
+				line-height: 1.5rem;
+				position: absolute;
+				bottom: 0;
+				right: 0;
 			}
 		}
 		
