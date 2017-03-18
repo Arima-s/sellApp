@@ -14,7 +14,7 @@
 				</div>
 				<div class="supports" v-if="seller.supports" >
 					<span class="support_brand" :class="classMap[seller.supports[0].type]"></span>
-					<span class="support_description">{{seller.supports[0].description}}</span>
+					<span class="support_description"> {{seller.supports[0].description}} </span>
 				</div>
 			</div>
 			<div class="support-count" v-if="seller.supports">
